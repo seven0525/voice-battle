@@ -1,9 +1,12 @@
 
 from flask import Flask, request, redirect, url_for, render_template
 from time import sleep
+import random
 
 target_time = 10
-word_list = ["Do, or do not. There is no “try”.",
+player_name = []
+
+phrase_list = ["Do, or do not. There is no “try”.",
 "Love cannot be found where it doesn’t exist, nor can it be hidden where it truly does.",
 "Oh yes, the past can hurt. But you can either run from it, or learn from it.",
 "Why are you trying so hard to fit in when you were born to stand out?",
@@ -25,6 +28,7 @@ word_list = ["Do, or do not. There is no “try”.",
 "Great men are not born great, they grow great. - Mario Puzo, from The Godfather",
 ]
 
+
 def up_timer(secs):
     for i in range(0,secs):
         print("のこり{}秒です".format(target_time-i))
@@ -41,7 +45,22 @@ def index():
 def input():
     return render_template("input.html")
 
+@app.route('/send',methods=["POST","GET"])
+def send():
+    if request.method == "POST":
+        global phrase_list
+        player_name.append(request.form["first_name"])
+        player_name.append(request.form["second_name"])
+        phrase_list = random.choices(phrase_list, k=4)
+        phras_number = len(phrase_list)
+        return render_template("phrase_show.html", phrase_list=phrase_list,phras_number=phras_number)
+    else:
+        return render_template("input.html")
 
+@app.route('/choice',methods=["POST","GET"])
+def choice():
+    result = request.form
+    return render_template("input.html",result=result)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
