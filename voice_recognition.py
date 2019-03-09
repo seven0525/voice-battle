@@ -8,10 +8,13 @@ from google.cloud.speech import enums
 from google.cloud.speech import types
 import pyaudio
 from six.moves import queue
+from time import sleep
 
 # Audio recording parameters
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
+target_phrase = "" # 相手プレイヤーが選択したフレーズが入る
+limit_time = 5 # 音声受付が可能な制限時間(5秒)（これが0の段階でself.close=Trueになれば良い）
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
@@ -130,6 +133,22 @@ def listen_print_loop(responses):
                 break
 
             num_chars_printed = 0
+
+
+def compare_phrase(target_phrase, user_phrase): # フレーズの比較とポイントの集計をする関数（どこに追加すればよいのか分からない）
+    
+    # それぞれのフレーズをスペースおきにリスト化
+    target_phrase = target_phrase.split()
+    user_phrase = user_phrase.split()
+    
+    # 　単語ごとに一致しているかどうか判定し、3pt追加
+    points = 0
+    words_count = len(target_phrase)
+    for i in range(words_count):
+        if target_phrase[i] == user_phrase[i]:
+            points += 3
+    print(points)
+
 
 def main():
     # See http://g.co/cloud/speech/docs/languages
