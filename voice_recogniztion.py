@@ -136,11 +136,6 @@ def main():
     # for a list of supported languages.
     language_code = 'en-US'  # a BCP-47 language tag
 
-    # client = speech.SpeechClient()
-    import os
-    print(os.getcwd())
-    os.chdir("D:\マイ ドキュメント\バックアップデータ\Weekend_Engineer\ハッカソン_20190309\音系")
-    print(os.getcwd())
     client = speech.SpeechClient.from_service_account_json("./MyProject-90749589d270.json")
     config = types.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
