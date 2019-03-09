@@ -1,0 +1,12 @@
+div.player1 {
+    float: left;
+}
+
+div.player2 {
+    float: right;
+}
+
+div.button {
+    clear: both;
+    display: inline-block;
+}
