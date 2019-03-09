@@ -8,5 +8,8 @@ div.player2 {
 
 div.button {
     clear: both;
-    display: inline-block;
+    text-align: center;
+    margin-top: 500px;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
