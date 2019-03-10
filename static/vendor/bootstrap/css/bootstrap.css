@@ -9816,6 +9816,10 @@ button.bg-dark:focus {
   text-transform: uppercase !important;
 }
 
+.name_class {
+  font-size: 10rem;
+}
+
 .text-capitalize {
   text-transform: capitalize !important;
 }

@@ -5,16 +5,23 @@
         <h1 class="text-uppercase mb-0">名前を入力してください</h1>
         <div class="index_gamestart"></div>
     </div>
+    <br>
+    <br>
     <form action="/send" method="post">
-        <p>先行の名前:<br>
-            <input type="text" name="first_name" value="a" required> 
-        </p>
-        <p>後攻の名前:<br>
-            <input type="text" name="second_name" value="a" required>
-        </p>
-        <p>
+        <h3>先攻の名前:<br>
+            <input type="text" name="first_name" placeholder="西郷" required> 
+        </h3>
+        <br>
+        <h3>後攻の名前:<br>
+            <input type="text" name="second_name" placeholder="坂本" required>
+        </h3>
+        
+        <br>
+        <br>
+
+        <h2>
             <input type = "submit" value = "OK!!!!" />
-        </p>
+        </h2>
     </form>
     <div>
         {% if result %}
