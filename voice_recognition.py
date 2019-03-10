@@ -99,6 +99,7 @@ def compare_phrase(target_phrase, user_phrase): # フレーズの比較とポイ
 
 
 def listen_print_loop(responses):
+    global user_phrase_result
     """Iterates through server responses and prints them.
 
     The responses passed is a generator that will block until a response
@@ -170,7 +171,7 @@ def listen_print_loop(responses):
             num_chars_printed = len(transcript)
 
         else:
-            result = transcript + overwrite_chars
+            user_phrase_result = transcript + overwrite_chars
             print('Exiting..')
             break
 
@@ -200,4 +201,4 @@ def main():
         # Now, put the transcription responses to use.
         listen_print_loop(responses)
     
-    return result
+    return user_phrase_result
