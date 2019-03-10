@@ -7,20 +7,13 @@
             {% if phrase %}
                 <h2>{{phrase}}</h2>
             {% endif %}
-        <p id=aaa>5</p>  
-        <form name="timer">
-            <input type="text" value="">分
-            <input type="text" value="5">秒<br>
-            <input type="button" value="スタート" onclick="cntStart()">
-            <input type="button" value="ストップ" onclick="cntStop()">
-            </form>
-        
+        <p id=time_print>3</p>  
     </div>
 </header>
 <script>
 
     var timer1; //タイマーを格納する変数（タイマーID）の宣言
-    var sec = 10;
+    var sec = 3;
     window.onload = function(){
       //カウントダウン関数を1000ミリ秒毎に呼び出す関数
       timer1=setInterval("countDown()",1000);
@@ -37,9 +30,7 @@
       time_data=parseInt(time_data);
       if (time_data<=0)
       {
-        reSet();
         window.location.href = '/voice';
-
       }
       else
       {
