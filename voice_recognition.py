@@ -91,7 +91,10 @@ def compare_phrase(target_phrase, user_phrase): # フレーズの比較とポイ
     
     # 　単語ごとに一致しているかどうか判定し、3pt追加
     points = 0
-    words_count = len(target_phrase)
+    if len(target_phrase) < len(user_phrase):
+        words_count = len(target_phrase)
+    else:
+        words_count = len(user_phrase)
     for i in range(words_count):
         if target_phrase[i] == user_phrase[i]:
             points += 3
