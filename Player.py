@@ -1,10 +1,10 @@
 import random
 
 class Player:
-    def __init__(self, name, hp):
+    def __init__(self, name, hp, max_hp):
         self.name = name
         self.hp = hp
-        self.max_hp = hp
+        self.max_hp = max_hp
     
     def attack(self):
         """
