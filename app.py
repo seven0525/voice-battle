@@ -59,9 +59,13 @@ def send():
 
 @app.route('/choice',methods=["POST","GET"])
 def choice():
-    result = request.form
-    return render_template("input.html",result=result)
+    #phrase = request.form["select_phrase"]
+    phrase = "テストテスト"
+    return render_template("phrase_speak.html",phrase=phrase)
 
+@app.route('/battle')
+def send_battle():
+    return render_template("battle.html")
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
 

@@ -4,24 +4,17 @@
   <!-- Header -->
   <header class="masthead bg-primary text-white text-center">
     <div class="container">
-        
       <h1 class="text-uppercase mb-0"></h1>
-      {%for phrase in phrase_list%}
       <form action="/choice" method="post">
-        <select name="example" size=4>
-          <option class="index_gamestart">{{loop.index0+1 }}番目-{{phrase}}</option>
+      {%for phrase in phrase_list%}
+        <select name="select_phrase" size=4 class="text-uppercase mb-0">
+          <option  align="left" value="{{loop.index0+1 }}番目-{{phrase}}">{{loop.index0+1 }}番目-{{phrase}}</option>
         </select>
+        {% endfor %}
         <p>
-            <input type = "submit" value = "OK!!!!" />
-        </p>
+          <input type = "submit" value = "OK!!!!" />
+      </p>
       </form>
-    <div align="left" style="line-height: 2em" class="index_gamestart"> {{loop.index0+1 }}番目-{{phrase}}
-    </div>
-  
-    <div>
-        
-
-     {% endfor %}
     </div>
   </header>
 
