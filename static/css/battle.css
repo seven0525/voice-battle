@@ -28,15 +28,3 @@ div.character_image {
 div.hp_value {
     padding-left: 20px;
 }
-
-div.turn_change {
-    clear: both;
-    text-align: center;
-    margin-top: 500px;
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-div.turn_change > input {
-    font-size: 22pt;
-}

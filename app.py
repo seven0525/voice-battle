@@ -20,7 +20,7 @@ phrase_list = [
     "It is not our abilities that show what we truly are",
     "Love you now and forever",
     "Life is like a box of chocolates, you never know what you are going to get",
-    "They want tp tell you you cannot do it",
+    "They want to tell you you cannot do it",
     "You cannot live your life to please others",
     "You learn to ignore the names people call you",
     "This could mean losing girlfriends",
