@@ -60,8 +60,8 @@ def send():
 
 @app.route('/choice',methods=["POST","GET"])
 def choice():
-    result = request.form
-    return render_template("phrase_speak.html",result=result)
+    phrase = request.form["select_phrase"]
+    return render_template("phrase_speak.html",phrase=phrase)
 
 @app.route("/voice") # phrase_speak.htmlで3秒経過したらこっちに移動
 def voice():

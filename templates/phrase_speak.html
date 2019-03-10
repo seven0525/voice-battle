@@ -2,12 +2,11 @@
 {% block content %}
 <header class="masthead bg-primary text-white text-center">
     <div class="container">
-        <h1 class="text-uppercase mb-0">選択したフレーズ</h1>
         <div>
             {% if phrase %}
-                <h2>{{phrase}}</h2>
+                <h1 class="text-uppercase mb-0">{{phrase}}</h1>
             {% endif %}
-        <p id=time_print>3</p>  
+        <h2 id=time_print>3</h2>  
     </div>
 </header>
 <script>
@@ -28,8 +27,12 @@
     function tmWrite(time_data)
     {
       time_data=parseInt(time_data);
-      if (time_data==0)
+      if (time_data < 0){
+        document.getElementById("time_print").innerText = "録音中";
+      }
+      else if (time_data==0)
       {
+        document.getElementById("time_print").innerText = "スタート!!";
         window.location.href = '/voice';
       }
       else
