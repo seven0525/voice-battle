@@ -97,7 +97,7 @@ def compare_phrase(target_phrase, user_phrase): # フレーズの比較とポイ
         words_count = len(user_phrase)
     for i in range(words_count):
         if target_phrase[i] == user_phrase[i]:
-            points += 3
+            points += 30
     return points
 
 

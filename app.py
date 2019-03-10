@@ -66,13 +66,14 @@ def send2():
     """
     battle.html -> phrase_show.html
     """
+    global phrase_list, atk_turn
+    
     # 攻撃ターンの交代
     if atk_turn == 0:
         atk_turn = 1 # 先攻側 -> 後攻側
     elif atk_turn == 1:
         atk_turn = 0 # 後攻側 -> 先攻側
     
-    global phrase_list
     phrase_list2 = random.choices(phrase_list, k=4)
     phrase_number = len(phrase_list2)
     return render_template("phrase_show.html", phrase_list=phrase_list2, phrase_number=phrase_number)
