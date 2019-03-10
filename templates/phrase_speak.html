@@ -7,10 +7,10 @@
             {% if phrase %}
                 <h2>{{phrase}}</h2>
             {% endif %}
-        </div>
+        <p id=aaa>5</p>  
         <form name="timer">
             <input type="text" value="">分
-            <input type="text" value="10">秒<br>
+            <input type="text" value="5">秒<br>
             <input type="button" value="スタート" onclick="cntStart()">
             <input type="button" value="ストップ" onclick="cntStop()">
             </form>
@@ -27,14 +27,14 @@
     //カウントダウン関数を1000ミリ秒毎に呼び出す関数
     function cntStart()
     {
-      document.timer.elements[2].disabled=true;
+      //document.timer.elements[2].disabled=true;
       timer1=setInterval("countDown()",1000);
     }
     
     //タイマー停止関数
     function cntStop()
     {
-      document.timer.elements[2].disabled=false;
+      //document.timer.elements[2].disabled=false;
       clearInterval(timer1);
     }
     
@@ -78,6 +78,7 @@
         document.timer.elements[0].value=Math.floor(int/60);
         //残り秒数はintを60で割った余り
         document.timer.elements[1].value=int % 60;
+        document.getElementById("aaa").innerText = document.timer.elements[1].value;
       }
     }
     
@@ -89,6 +90,7 @@
       document.timer.elements[2].disabled=false;
       clearInterval(timer1);
     }  
+    document.write(timer1);
       
     </script>
 {% endblock %}
