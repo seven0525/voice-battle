@@ -20,9 +20,10 @@ class Player:
         print("プレイヤー{}は{}ダメージを受けた！".format(self.name, damage))
 
 """
-バトルシーンの流れチェック
+バトルシーンの流れチェック（現在は使っていない）
 """
 
+"""
 players = [Player("A", 1000), Player("B", 1000)]
 atk_turn = 0
 total_turns = 1
@@ -65,3 +66,4 @@ while True:
     
     total_turns += 1
     print()
+"""
