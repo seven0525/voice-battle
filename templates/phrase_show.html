@@ -6,11 +6,11 @@
     <div class="container">
       <h1 class="text-uppercase mb-0"></h1>
       <form action="/choice" method="post">
+        <select name="select_phrase" size=4 class="mb-0 bg-primary text-white text-center ">
       {%for phrase in phrase_list%}
-        <select name="select_phrase" size=4 class="text-uppercase mb-0">
-          <option  align="left" value="{{loop.index0+1 }}番目-{{phrase}}">{{loop.index0+1 }}番目-{{phrase}}</option>
-        </select>
+          <h2><option align="left" value="{{loop.index0+1 }}番目-{{phrase}}">{{loop.index0+1 }}番目-{{phrase}}</option></h2>
         {% endfor %}
+      </select>
         <p>
           <input type = "submit" value = "OK!!!!" />
       </p>
