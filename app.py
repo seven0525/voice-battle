@@ -1,10 +1,10 @@
-
 from flask import Flask, request, redirect, url_for, render_template
 from time import sleep
 import random
+from Player import Player
 
 target_time = 10
-player_name = []
+players = []
 
 phrase_list = ["Do, or do not. There is no “try”.",
 "Love cannot be found where it doesn’t exist, nor can it be hidden where it truly does.",
@@ -49,11 +49,11 @@ def input():
 def send():
     if request.method == "POST":
         global phrase_list
-        player_name.append(request.form["first_name"])
-        player_name.append(request.form["second_name"])
+        players.append(Player(request.form["first_name"], 1000)) # Player1: name, hp
+        players.append(Player(request.form["second_name"], 1000)) # Player2: name, hp
         phrase_list = random.choices(phrase_list, k=4)
-        phras_number = len(phrase_list)
-        return render_template("phrase_show.html", phrase_list=phrase_list,phras_number=phras_number)
+        phrase_number = len(phrase_list)
+        return render_template("phrase_show.html", phrase_list=phrase_list,phrase_number=phrase_number)
     else:
         return render_template("input.html")
 
@@ -62,9 +62,9 @@ def choice():
     result = request.form
     return render_template("input.html",result=result)
 
+@app.route('/battle')
+def send_battle():
+    return render_template("battle.html", players=players) # 戦闘画面で表示するプレイヤーのデータをHTML側に渡す
+
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
-
-
-
-
