@@ -95,7 +95,11 @@ def send_battle():
     global players
     points = voice_recognition.compare_phrase(phrase, user_phrase)
     damage = points
-    players[atk_turn].receive_damage(damage) # 発音の正確さのポイント -> ダメージに反映
+    # atk_turn側のプレイヤーが攻撃、もう一方がダメージを受ける
+    if atk_turn == 0:
+        players[1].receive_damage(damage) # 発音の正確さのポイント -> ダメージに反映
+    elif atk_turn == 1:
+        players[0].receive_damage(damage)
     return render_template("battle.html", players=players) # 戦闘画面で表示するプレイヤーのデータをHTML側に渡す
 
 if __name__ == '__main__':
