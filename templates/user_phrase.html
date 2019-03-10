@@ -4,8 +4,8 @@
     <div class="container">
         <h1 class="text-uppercase mb-0">選択したフレーズ</h1>
         <div>
-            {% if phrase %}
-                <h2>{{phrase}}</h2>
+            {% if user_phrase %}
+                <h2>{{user_phrase}}</h2>
             {% endif %}
         <p id=aaa>3</p>  
         <form name="timer">
@@ -69,7 +69,7 @@
       if (int<=0)
       {
         reSet();
-        window.location.href = '/voice';
+        window.location.href = '/battle';
 
       }
       else

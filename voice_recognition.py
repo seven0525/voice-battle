@@ -170,8 +170,9 @@ def listen_print_loop(responses):
             num_chars_printed = len(transcript)
 
         else:
-            print(transcript + overwrite_chars)
-            print('Exiting..')
+            result = transcript + overwrite_chars
+            return result
+            # print('Exiting..')
             break
 
 
