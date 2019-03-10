@@ -60,7 +60,7 @@ def send():
 @app.route('/choice',methods=["POST","GET"])
 def choice():
     result = request.form
-    return render_template("input.html",result=result)
+    return render_template("phrase_speak.html",result=result)
 
 @app.route('/battle')
 def send_battle():
