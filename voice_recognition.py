@@ -171,8 +171,7 @@ def listen_print_loop(responses):
 
         else:
             result = transcript + overwrite_chars
-            return result
-            # print('Exiting..')
+            print('Exiting..')
             break
 
 
@@ -200,6 +199,5 @@ def main():
 
         # Now, put the transcription responses to use.
         listen_print_loop(responses)
-
-if __name__ == '__main__':
-    main()
+    
+    return result
