@@ -1,32 +1,42 @@
+body {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 div.player1 {
     float: left;
-    margin-left: 100px;
+    margin-left: 200px;
 }
 
 div.player2 {
     float: right;
-    margin-right: 100px;
+    margin-right: 200px;
 }
 
 div.status {
-    font-size: 18pt; /* font-size ... デフォルトは12pt */
+    font-size: 22pt; /* font-size ... デフォルトは12pt */
     float: left;
 }
 
-div.player_name {
+div.hp_meter {
 }
 
-div.hp_meter {
-    width: 100px;
+div.character_image {
+    transform: scale(1.6, 1.6);
 }
 
 div.hp_value {
+    padding-left: 20px;
 }
 
-div.button {
+div.turn_change {
     clear: both;
     text-align: center;
     margin-top: 500px;
     padding-top: 50px;
     padding-bottom: 20px;
+}
+
+div.turn_change > input {
+    font-size: 22pt;
 }

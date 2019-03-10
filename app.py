@@ -52,11 +52,21 @@ def send():
         global phrase_list
         players.append(Player(request.form["first_name"], 1000)) # Player1: name, hp
         players.append(Player(request.form["second_name"], 1000)) # Player2: name, hp
-        phrase_list = random.choices(phrase_list, k=4)
-        phrase_number = len(phrase_list)
-        return render_template("phrase_show.html", phrase_list=phrase_list,phrase_number=phrase_number)
+        phrase_list1 = random.choices(phrase_list, k=4)
+        phrase_number = len(phrase_list1)
+        return render_template("phrase_show.html", phrase_list=phrase_list1, phrase_number=phrase_number)
     else:
         return render_template("input.html")
+
+@app.route('/send2', methods=["POST", "GET"])
+def send2():
+    """
+    battle.html -> phrase_show.html
+    """
+    global phrase_list
+    phrase_list2 = random.choices(phrase_list, k=4)
+    phrase_number = len(phrase_list2)
+    return render_template("phrase_show.html", phrase_list=phrase_list2, phrase_number=phrase_number)
 
 @app.route('/choice',methods=["POST","GET"])
 def choice():
