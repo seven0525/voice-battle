@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, url_for, render_template
 from time import sleep
 import random
 from Player import Player
+import voice_recognition as voice_recognition
 
 target_time = 10
 players = []
@@ -62,9 +63,20 @@ def choice():
     result = request.form
     return render_template("phrase_speak.html",result=result)
 
-@app.route('/battle')
+@app.route("/voice") # phrase_speak.htmlで3秒経過したらこっちに移動
+def voice():
+    user_phrase = voice_recognition.main()
+    return render_template("user_phrase.html", user_phrase=user_phrase)
+
+
+
+
+@app.route('/battle') #JSで画面遷移するときに引数を一緒に持っていく方法が分からない
 def send_battle():
-    return render_template("battle.html", players=players) # 戦闘画面で表示するプレイヤーのデータをHTML側に渡す
+    user_phrase = "test test test" 
+    target_phrase = "test test test"
+    points = voice_recognition.compare_phrase(target_phrase, user_phrase)
+    return render_template("battle.html", players=players, points=points) # 戦闘画面で表示するプレイヤーのデータをHTML側に渡す
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
