@@ -66,6 +66,12 @@ def send2():
     """
     battle.html -> phrase_show.html
     """
+    # 攻撃ターンの交代
+    if atk_turn == 0:
+        atk_turn = 1 # 先攻側 -> 後攻側
+    elif atk_turn == 1:
+        atk_turn = 0 # 後攻側 -> 先攻側
+    
     global phrase_list
     phrase_list2 = random.choices(phrase_list, k=4)
     phrase_number = len(phrase_list2)
@@ -87,13 +93,9 @@ def voice():
 def send_battle():
     global players
     points = voice_recognition.compare_phrase(phrase, user_phrase)
-    players[atk_turn].receive_damage(points) # 発音の正確さのポイント -> ダメージに反映
-    # 
-    if atk_turn == 0:
-        atk_turn = 1
-    elif atk_turn == 1:
-        atk_turn = 0
-    return render_template("battle.html", players=players, points=points) # 戦闘画面で表示するプレイヤーのデータをHTML側に渡す
+    damage = points
+    players[atk_turn].receive_damage(damage) # 発音の正確さのポイント -> ダメージに反映
+    return render_template("battle.html", players=players) # 戦闘画面で表示するプレイヤーのデータをHTML側に渡す
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
