@@ -13,7 +13,7 @@ from time import sleep
 # Audio recording parameters
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
-target_phrase = "" # 相手プレイヤーが選択したフレーズが入る
+target_phrase = "good morning" # 相手プレイヤーが選択したフレーズが入る
 limit_time = 5 # 音声受付が可能な制限時間(5秒)（これが0の段階でself.close=Trueになれば良い）
 
 class MicrophoneStream(object):
@@ -80,6 +80,24 @@ class MicrophoneStream(object):
 
             yield b''.join(data)
 
+
+def compare_phrase(target_phrase, user_phrase): # フレーズの比較とポイントの集計をする関数（どこに追加すればよいのか分からない）
+    
+    # それぞれのフレーズを小文字にした後、スペースおきにリスト化
+    target_phrase = target_phrase.lower()
+    target_phrase = target_phrase.split()
+    user_phrase = user_phrase.lower()
+    user_phrase = user_phrase.split()
+    
+    # 　単語ごとに一致しているかどうか判定し、3pt追加
+    points = 0
+    words_count = len(target_phrase)
+    for i in range(words_count):
+        if target_phrase[i] == user_phrase[i]:
+            points += 3
+    return points
+
+
 def listen_print_loop(responses):
     """Iterates through server responses and prints them.
 
@@ -117,6 +135,34 @@ def listen_print_loop(responses):
         # some extra spaces to overwrite the previous result
         overwrite_chars = ' ' * (num_chars_printed - len(transcript))
 
+        # while limit_time >0:
+        #     if not result.is_final:
+        #         sys.stdout.write(transcript + overwrite_chars + '\r')
+        #         sys.stdout.flush()
+        #         num_chars_printed = len(transcript)
+
+        #         limit_time  =  limit_time #制限時間を更新（JSから取得）
+        #         continue
+        #     else:
+        #         print(transcript + overwrite_chars)
+        #         user_phrase = transcript + overwrite_chars
+                
+        #         points = compare_phrase(target_phrase, user_phrase)
+
+        #         print('{}ポイント獲得'.format(points))
+        #         break # While処理から抜ける
+        #         break # For処理から抜ける
+        
+        # else:
+        #     print(transcript + overwrite_chars)
+        #     user_phrase = transcript + overwrite_chars
+
+        #     points = compare_phrase(target_phrase, user_phrase)
+
+        #     print('{}ポイント獲得'.format(points))
+        #     break #While処理から抜ける
+
+        
         if not result.is_final:
             sys.stdout.write(transcript + overwrite_chars + '\r')
             sys.stdout.flush()
@@ -125,29 +171,9 @@ def listen_print_loop(responses):
 
         else:
             print(transcript + overwrite_chars)
+            print('Exiting..')
+            break
 
-            # Exit recognition if any of the transcribed phrases could be
-            # one of our keywords.
-            if re.search(r'\b(exit|quit)\b', transcript, re.I):
-                print('Exiting..')
-                break
-
-            num_chars_printed = 0
-
-
-def compare_phrase(target_phrase, user_phrase): # フレーズの比較とポイントの集計をする関数（どこに追加すればよいのか分からない）
-    
-    # それぞれのフレーズをスペースおきにリスト化
-    target_phrase = target_phrase.split()
-    user_phrase = user_phrase.split()
-    
-    # 　単語ごとに一致しているかどうか判定し、3pt追加
-    points = 0
-    words_count = len(target_phrase)
-    for i in range(words_count):
-        if target_phrase[i] == user_phrase[i]:
-            points += 3
-    print(points)
 
 
 def main():
