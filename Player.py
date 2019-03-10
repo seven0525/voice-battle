@@ -18,6 +18,10 @@ class Player:
         self.hp -= damage
         print("プレイヤー{}は{}ダメージを受けた！".format(self.name, damage))
 
+"""
+バトルシーンの流れチェック
+"""
+
 players = [Player("A", 1000), Player("B", 1000)]
 atk_turn = 0
 total_turns = 1

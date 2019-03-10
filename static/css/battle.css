@@ -1,9 +1,26 @@
 div.player1 {
     float: left;
+    margin-left: 100px;
 }
 
 div.player2 {
     float: right;
+    margin-right: 100px;
+}
+
+div.status {
+    font-size: 18pt; /* font-size ... デフォルトは12pt */
+    float: left;
+}
+
+div.player_name {
+}
+
+div.hp_meter {
+    width: 100px;
+}
+
+div.hp_value {
 }
 
 div.button {
