@@ -4,15 +4,15 @@ Voice Battleは、英語の発音の良さで相手と戦う対戦ゲームで�
 
 ## アプリ画面
 
-<img src="images/s1" width=50%>
+<img src="images/s1.png" width=50%>
 
-<img src="images/s2" width=50%>
+<img src="images/s2.png" width=50%>
 
-<img src="images/s3" width=50%>
+<img src="images/s3.png" width=50%>
 
-<img src="images/s4" width=50%>
+<img src="images/s4.png" width=50%>
 
-<img src="images/s5" width=50%>
+<img src="images/s5.png" width=50%>
 
 
 ## 技術
